@@ -12,10 +12,9 @@ export default function App() {
   useEffect(() => {
     const getMovies = () => {
       axios
-        .get("http://localhost:5000/api/movies") // Study this endpoint with Postman
+        .get("http://localhost:5000/api/movies") 
         .then((response) => {
-          // Study this response with a breakpoint or log statements
-          // and set the response data as the 'movieList' slice of state
+
           setMovieList(response.data);
         })
         .catch((error) => {
@@ -31,11 +30,6 @@ export default function App() {
 
   return (
     <div>
-      {/* <nav>
-        <Link to="/">Home</Link>
-        <Link to="/movies">Movies</Link>
-      </nav> */}
-
       <SavedList
         list={
           [
@@ -45,12 +39,15 @@ export default function App() {
       />
 
       <Switch>
-        <Route path={"/"}>
+
+      
+
+      <Route exact path="/">
           <MovieList movies={movieList} />
           {/* why movies instead of movie? */}
         </Route>
 
-        <Route path={"/movies/:id"}>
+        <Route path="/movies/:id">
           <Movie />
         </Route>
       </Switch>
